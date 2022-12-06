@@ -64,7 +64,9 @@ public String personList(Model model)
         { personService.updatePerson(p);
         return "redirect:/persons/list";}
 
-        @Postmapping(value="/deletePerson")
-        public String deletePerson()
-        {}
+        @PostMapping(value = "/deletePerson")
+        public String deletePerson(@ModelAttribute(value="person") Person p) {
+            personService.removePerson(p);
+            return "redirect:/persons/list";
+}
 }
